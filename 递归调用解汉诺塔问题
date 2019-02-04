@@ -1,0 +1,33 @@
+#include<stdio.h>
+int main()
+{
+	void hanoi(int n,char one,char two,char three);
+	int m;
+	
+	printf("please enter the number of the diskes:");
+	scanf("%d",&m);
+	printf("the steps of the moving %d diskes:",m);
+	hanoi(m,'A','B','C');
+	
+	
+} 
+
+void hanoi(int n,char one,char two,char three)//n个盘子，从one柱，借助two柱，移动到three柱 
+{
+	void move(char x,char y);
+	if(n==1)
+	{
+		move(one,three);
+	}
+	else
+	{
+		hanoi(n-1,one,three,two);//递归调用 
+		move(one,three);
+		hanoi(n-1,two,one,three);
+	}
+}
+
+void move(char x,char y)//打印移动方向 
+{
+	printf("%c->%c\n",x,y); 
+}
